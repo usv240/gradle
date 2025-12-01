@@ -220,11 +220,11 @@ public class DefaultCommandLineActionFactory implements CommandLineActionFactory
 
         @Override
         public void execute(ExecutionListener executionListener) {
-            String output = CliTextPrinter.renderVersionInfo(
+            String versionInfo = CliTextPrinter.renderVersionInfo(
                 clientMetaData(),
                 parameters.getDaemonParameters().getRequestedJvmCriteria().toString()
             );
-            System.out.print(output);
+            System.out.print(versionInfo);
         }
     }
 

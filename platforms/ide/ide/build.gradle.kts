@@ -26,9 +26,12 @@ dependencies {
 
     implementation(projects.baseServicesGroovy)
     implementation(projects.buildProcessServices)
+    implementation(projects.daemonProtocol)
+    implementation(projects.daemonServices)
     implementation(projects.classloaders)
     implementation(projects.ear)
     implementation(projects.languageJava)
+    implementation(projects.launcher)
     implementation(projects.loggingApi)
     implementation(projects.platformBase)
     implementation(projects.pluginsJava)
@@ -40,7 +43,7 @@ dependencies {
     implementation(libs.slf4jApi)
     implementation(libs.commonsIo)
     implementation(libs.commonsLang)
-    implementation(libs.ant)
+
 
     runtimeOnly(projects.buildEvents)
     runtimeOnly(projects.languageJvm)

@@ -28,6 +28,7 @@ import org.gradle.launcher.cli.converter.InitialPropertiesConverter;
 import org.gradle.launcher.cli.converter.StartParameterConverter;
 import org.gradle.launcher.daemon.configuration.DaemonBuildOptions;
 import org.gradle.util.internal.DefaultGradleVersion;
+import org.jspecify.annotations.NullMarked;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,6 +41,7 @@ import java.util.Properties;
 /**
  * Produces the exact plaintext for {@code --help} and {@code --version} so both the CLI launcher and the Tooling API can reuse it.
  */
+@NullMarked
 public final class CliTextPrinter {
     private static final Logger LOGGER = LoggerFactory.getLogger(CliTextPrinter.class);
     private CliTextPrinter() {}
@@ -60,8 +62,8 @@ public final class CliTextPrinter {
         printAligned(out, "Kotlin", resolveKotlinVersion(), maxKey);
         printAligned(out, "Groovy", ReleaseInfo.getVersion(), maxKey);
         printAligned(out, "Ant", Main.getAntVersion(), maxKey);
-        printAligned(out, "Launcher JVM", Jvm.current().toString(), maxKey);
-        printAligned(out, "Daemon JVM", daemonJvmCriteria, maxKey);
+        printAligned(out, "Launcher JVM", Jvm.current().toString(), maxKey); // TODO (donat) makes little sense for the Tooling API, if calculated from the a build action
+        printAligned(out, "Daemon JVM", daemonJvmCriteria, maxKey); // TODO (donat) the current JVM for the Tooling API, if calculated from the a build action
         printAligned(out, "OS", OperatingSystem.current().toString(), maxKey);
         out.println();
         out.flush();
